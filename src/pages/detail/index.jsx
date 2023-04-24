@@ -1,17 +1,17 @@
-import { View, Text } from '@tarojs/components'
+import { View, WebView } from '@tarojs/components'
 import { useLoad } from '@tarojs/taro'
-import { memo } from 'react'
+import { memo, useState } from 'react'
 import styles from './index.module.scss'
 
 const Detail = memo(function() {
-
-  useLoad(() => {
-    console.log('Page loaded.')
+  const [link, setLink] = useState("")
+  useLoad((option) => {
+    setLink(option.link)
   })
 
   return (
     <View className={styles['detail']}>
-      <Text>详情</Text>
+      <WebView src={link}></WebView>
     </View>
   )
 })
